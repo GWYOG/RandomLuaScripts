@@ -166,7 +166,12 @@ local function forceForward()
 		robot.swing()
 		sandFlag = true
 	end
-	robot.forward()	
+	-- make sure the robot does move forward in this function
+	while true do 
+		if robot.forward() then
+			break
+		end
+	end
 end
 
 -- judge whether the robot should turn right when it's leaving the working area
@@ -203,12 +208,12 @@ local function moveToNext()
 				return
 			end
 		end
-		-- update varibles
-		stepCount = 2
-		cycleCount = cycleCount + 1
 		-- robot move
 		robot.turnAround()
 		forceForward()
+		-- update varibles
+		stepCount = 2
+		cycleCount = cycleCount + 1
 	else
 		-- check if the robot will leave the working area
 		if stepCount % frontLength == 0 then
