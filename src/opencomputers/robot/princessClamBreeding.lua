@@ -162,12 +162,12 @@ local function forceForward()
 			beamFlag = false
 		end
 	end
-	if robot.compare() then
-		robot.swing()
-		sandFlag = true
-	end
 	-- make sure the robot does move forward in this function
 	while true do 
+		if robot.compare() then
+			robot.swing()
+			sandFlag = true
+		end
 		if robot.forward() then
 			break
 		end
