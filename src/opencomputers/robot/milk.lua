@@ -16,14 +16,14 @@ local component = require("component")
 local tc = component.tank_controller
 
 while true do 
-	tankCapacity = tc.getTankCapacity(1)
-	if tankCapacity == 0 then
-		os.sleep(1)
-	else
-		tankLevel = tc.getTankLevel(1)
-		if tankLevel <= tankCapacity - 1000 then
-			robot.use()
-			robot.useUp()
-		end
-	end
+    tankCapacity = tc.getTankCapacity(1)
+    if tankCapacity == 0 then
+        os.sleep(1)
+    else
+        tankLevel = tc.getTankLevel(1)
+        if tankLevel <= tankCapacity - 1000 then
+            robot.use()
+            robot.useUp()
+        end
+    end
 end
